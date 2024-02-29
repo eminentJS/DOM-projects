@@ -27,8 +27,14 @@ const deadline = document.querySelector('.deadline');
 const items = document.querySelectorAll('.deadline-format h4');
 
 // the date format below is year, month, day, hours, minutes, seconds
-let futureDate = new Date(2024, 4, 25, 11, 30, 0);
+// let futureDate = new Date(2024, 4, 25, 11, 30, 0);
 
+let tempDate = new Date();
+let tempYear = tempDate.getFullYear();
+let tempMonth = tempDate.getMonth();
+let tempDay = tempDate.getDate();
+
+const futureDate = new Date(tempYear, tempMonth, tempDay + 10, 11, 30, 0);
 const year = futureDate.getFullYear();
 const hours = futureDate.getHours();
 const minutes = futureDate.getMinutes();

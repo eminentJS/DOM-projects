@@ -57,7 +57,7 @@ function addItem(e) {
 }
 // display alert
 function displayAlert(text, action) {
-  alert.textContent = 'empty value';
+  alert.textContent = text;
   alert.classList.add(`alert-${action}`);
 
   // remove alert
@@ -68,7 +68,10 @@ function displayAlert(text, action) {
 }
 // set back to default
 function setBackToDefault() {
-  console.log('set back to default');
+  grocery.value = '';
+  editFlag = false;
+  editID = '';
+  submitBtn.textContent = 'submit';
 }
 
 // ****** LOCAL STORAGE **********

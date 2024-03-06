@@ -89,7 +89,7 @@ function clearItems() {
   container.classList.remove('show-container');
   displayAlert('empty list', 'danger');
   setBackToDefault();
-  // localStotage.removeItem('list');
+  localStotage.removeItem('list');
 }
 // delete function
 function deleteItem(e) {
@@ -127,14 +127,30 @@ function setBackToDefault() {
 function addToLocalStorage(id, value) {
   const grocery = { id, value };
   let items = getLocalStorage();
-  console.log(items);
 
   items.push(grocery);
   localStorage.setItem('list'.JSON.toStringify(items));
   //   console.log('added to local storage');
 }
-function removeFromLocalStorage(id) {}
-function editLocalStorage(id, value) {}
+function removeFromLocalStorage(id) {
+  let items = getLocalStorage();
+  items = items.filter(function (item) {
+    if (item.id != id) {
+      return item;
+    }
+  });
+  localStorage.setItem('list'.JSON.toStringify(items));
+}
+function editLocalStorage(id, value) {
+  let items = getLocalStorage();
+  items.map(function (item) {
+    if (item.id === id) {
+      item.value = value;
+    }
+    return item;
+  });
+  localStorage.setItem('list'.JSON.toStringify(items));
+}
 function getLocalStorage() {
   return localStorage.getItem('list')
     ? JSON.parse(localStorage.getItem('list'))
